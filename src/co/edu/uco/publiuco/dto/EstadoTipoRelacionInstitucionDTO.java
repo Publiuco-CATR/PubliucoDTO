@@ -13,6 +13,7 @@ public final class EstadoTipoRelacionInstitucionDTO {
 		setIdentificador(identificador);
 		setNombre("");
 		setDescripcion("");
+		//Vamos a ver si guardo el token jaja
 	}
 
 	public EstadoTipoRelacionInstitucionDTO(UUID identificador, String nombre, String descripcion) {

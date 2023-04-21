@@ -9,9 +9,9 @@ public final class EstadoTipoRelacionInstitucionDTO {
 
     public EstadoTipoRelacionInstitucionDTO() {
         super();
-        this.identificador = generarNuevoUUID();
-        this.nombre = obtenerValorDefecto();
-        this.descripcion = obtenerValorDefecto();
+        setIdentificador(this.identificador);
+        setNombre(obtenerValorDefecto());
+        setDescripcion(obtenerValorDefecto());
     }
 
     public EstadoTipoRelacionInstitucionDTO(UUID identificador, String nombre, String descripcion) {
@@ -21,53 +21,54 @@ public final class EstadoTipoRelacionInstitucionDTO {
         setDescripcion(descripcion);
     }
 
-    public final UUID getIdentificador() {
-        return identificador;
-    }
-
     public final EstadoTipoRelacionInstitucionDTO setIdentificador(final UUID identificador) {
         this.identificador = identificador;
-        if (!esVaciaONulaLaCadena(identificador.toString())) {
+        if (!estaNulaLaCadena(identificador.toString())) {
             this.identificador = generarNuevoUUID();
         }
         return this;
     }
 
-    public final String getNombre() {
-        return nombre;
-    }
-
     public final EstadoTipoRelacionInstitucionDTO setNombre(final String nombre) {
 
-        if (!esVaciaONulaLaCadena(nombre)) {
+        this.nombre = "";
+        if (!estaNulaLaCadena(nombre)) {
             this.nombre = nombre.trim();
         }
 
         return this;
     }
 
-    public final String getDescripcion() {
-        return descripcion;
-    }
-
     public final EstadoTipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
-        this.descripcion = descripcion;
 
-        if(esVaciaONulaLaCadena(descripcion)){
+        this.descripcion = descripcion;
+        if(!estaNulaLaCadena(descripcion)){
             this.descripcion = getNombre();
         }
 
         return this;
     }
 
+    public final UUID getIdentificador() {
+        return identificador;
+    }
+
+    public final String getNombre() {
+        return nombre;
+    }
+
+    public final String getDescripcion() {
+        return descripcion;
+    }
+
     //INICIO Métodos de CROSS CUTTING (No sé como traerlo desde el componente PublicucoCrossCutting)
 
-    public static boolean esVaciaONulaLaCadena (String cadena) {
-        return cadena == null || "".equals(cadena.trim().intern());
+    public static boolean estaNulaLaCadena (String cadena) {
+        return cadena == null;
     }
 
     public static UUID generarNuevoUUID() {
-        return UUID.randomUUID(); //Faltaría validar que el UUID no exista para otro registro... supongo es del componente PubliucoData
+        return UUID.randomUUID(); //Faltaría validar que el UUID no exista para otro registro... supongo es responabilidad de componente PubliucoData
     }
 
     public static String obtenerValorDefecto(){

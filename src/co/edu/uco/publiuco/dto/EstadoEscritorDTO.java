@@ -2,20 +2,20 @@ package co.edu.uco.publiuco.dto;
 
 import java.util.UUID;
 
-public class EstadoEscritor {
+public class EstadoEscritorDTO {
 	private UUID identificador;
 	private String nombre;
 	private String descripcion;
 
 
-	public EstadoEscritor() {
+	public EstadoEscritorDTO() {
 		super();
 		setIdentificador(identificador);
 		setNombre("");
 		setDescripcion("");
 	}
 
-	public EstadoEscritor(UUID identificador, String nombre, String descripcion) {
+	public EstadoEscritorDTO(UUID identificador, String nombre, String descripcion) {
 		super();
 		setIdentificador(identificador);
 		setNombre(nombre);
@@ -27,7 +27,7 @@ public class EstadoEscritor {
 		return identificador;
 	}
 
-	public final EstadoEscritor setIdentificador(final UUID identificador) {
+	public final EstadoEscritorDTO setIdentificador(final UUID identificador) {
 		this.identificador = identificador;
 		return this;
 	}
@@ -36,7 +36,7 @@ public class EstadoEscritor {
 		return nombre;
 	}
 
-	public final EstadoEscritor setNombre(final String nombre) {
+	public final EstadoEscritorDTO setNombre(final String nombre) {
 
 		this.nombre = "";
 
@@ -51,7 +51,7 @@ public class EstadoEscritor {
 		return descripcion;
 	}
 
-	public final EstadoEscritor setDescripcion(final String descripcion) {
+	public final EstadoEscritorDTO setDescripcion(final String descripcion) {
 		this.descripcion = descripcion;
 		return this;
 	}

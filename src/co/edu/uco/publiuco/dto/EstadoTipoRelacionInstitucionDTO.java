@@ -55,6 +55,4 @@ public final class EstadoTipoRelacionInstitucionDTO {
 		this.descripcion = descripcion;
 		return this;
 	}
-
-
 }

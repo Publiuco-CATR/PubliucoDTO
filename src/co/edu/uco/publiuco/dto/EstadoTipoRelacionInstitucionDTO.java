@@ -1,6 +1,8 @@
 package co.edu.uco.publiuco.dto;
 
 import java.util.UUID;
+import static co.edu.uco.publiuco.dto.ValidacionesCrossCutting.*;
+
 public final class EstadoTipoRelacionInstitucionDTO {
 
     private UUID identificador;
@@ -60,21 +62,4 @@ public final class EstadoTipoRelacionInstitucionDTO {
     public final String getDescripcion() {
         return descripcion;
     }
-
-    //INICIO Métodos de CROSS CUTTING (No sé como traerlo desde el componente PublicucoCrossCutting)
-
-    public static boolean estaNulaLaCadena (String cadena) {
-        return cadena == null;
-    }
-
-    public static UUID generarNuevoUUID() {
-        return UUID.randomUUID(); //Faltaría validar que el UUID no exista para otro registro... supongo es responabilidad de componente PubliucoData
-    }
-
-    public static String obtenerValorDefecto(){
-        return "";
-    }
-
-    //FIN MÉTODOS CROSS CUTTING
-
 }

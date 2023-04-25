@@ -5,20 +5,18 @@ import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
 
-public class TipoRevisionDTO {
+public class TipoEstadoDTO {
     private UUID identificador;
     private String nombre;
-    private String descripcion;
 
-    public TipoRevisionDTO() {
+
+    public TipoEstadoDTO() {
         setIdentificador(UtilUUID.DEFAULT_UUID);
         setNombre(UtilText.getDefaultValue());
-        setDescripcion(UtilText.getDefaultValue());
     }
-    public TipoRevisionDTO(UUID identificador, String nombre, String descripcion) {
+    public TipoEstadoDTO(UUID identificador, String nombre) {
         setIdentificador(identificador);
         setNombre(nombre);
-        setDescripcion(descripcion);
     }
 
     public UUID getIdentificador() {
@@ -29,28 +27,20 @@ public class TipoRevisionDTO {
         return nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
 
 
-    public TipoRevisionDTO setIdentificador(UUID identificador) {
+    public TipoEstadoDTO setIdentificador(UUID identificador) {
         this.identificador = identificador;
         return this;
     }
 
-    public TipoRevisionDTO setNombre(String nombre) {
+    public TipoEstadoDTO setNombre(String nombre) {
         this.nombre = UtilText.applyTrim(nombre);
         return this;
     }
 
-    public TipoRevisionDTO setDescripcion(String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-        return this;
-    }
 
 
 
 }
-
 

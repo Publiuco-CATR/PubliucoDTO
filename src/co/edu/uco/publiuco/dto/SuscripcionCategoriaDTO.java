@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
@@ -10,15 +11,30 @@ public class SuscripcionCategoriaDTO {
     private PlanCategoriaDTO planCategoria;
 
     public SuscripcionCategoriaDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setPerfil(new PerfilDTO());
-        setPlanCategoria(new PlanCategoriaDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setPerfil(PerfilDTO.create());
+        setPlanCategoria(PlanCategoriaDTO.create());
     }
 
-    public SuscripcionCategoriaDTO(UUID identificador, PerfilDTO perfil, PlanCategoriaDTO planCategoria) {
+    public SuscripcionCategoriaDTO(final UUID identificador,final PerfilDTO perfil, final PlanCategoriaDTO planCategoria) {
         setIdentificador(identificador);
         setPerfil(perfil);
         setPlanCategoria(planCategoria);
+    }
+
+    public SuscripcionCategoriaDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public SuscripcionCategoriaDTO setPerfil(final PerfilDTO perfil) {
+        this.perfil = UtilObject.getDefault(perfil, PerfilDTO.create());
+        return this;
+    }
+
+    public SuscripcionCategoriaDTO setPlanCategoria(final PlanCategoriaDTO planCategoria) {
+        this.planCategoria = UtilObject.getDefault(planCategoria, PlanCategoriaDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -33,18 +49,7 @@ public class SuscripcionCategoriaDTO {
         return planCategoria;
     }
 
-    public SuscripcionCategoriaDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public SuscripcionCategoriaDTO setPerfil(PerfilDTO perfil) {
-        this.perfil = perfil;
-        return this;
-    }
-
-    public SuscripcionCategoriaDTO setPlanCategoria(PlanCategoriaDTO planCategoria) {
-        this.planCategoria = planCategoria;
-        return this;
+    public static SuscripcionCategoriaDTO create (){
+        return new SuscripcionCategoriaDTO();
     }
 }

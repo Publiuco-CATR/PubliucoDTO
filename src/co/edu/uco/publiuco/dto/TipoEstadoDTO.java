@@ -8,15 +8,34 @@ import java.util.UUID;
 public class TipoEstadoDTO {
     private UUID identificador;
     private String nombre;
+    private String descripcion;
 
 
     public TipoEstadoDTO() {
         setIdentificador(UtilUUID.DEFAULT_UUID);
         setNombre(UtilText.getDefaultValue());
+        setDescripcion(UtilText.getDefaultValue());
     }
-    public TipoEstadoDTO(UUID identificador, String nombre) {
+
+    public TipoEstadoDTO(final UUID identificador, final String nombre) {
         setIdentificador(identificador);
         setNombre(nombre);
+        setDescripcion(descripcion);
+    }
+
+    public TipoEstadoDTO setIdentificador(final UUID identificador) {
+        this.identificador = identificador;
+        return this;
+    }
+
+    public TipoEstadoDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public TipoEstadoDTO setDescripcion(final String descripcion) {
+        this.descripcion = UtilText.applyTrim(descripcion);
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -27,20 +46,12 @@ public class TipoEstadoDTO {
         return nombre;
     }
 
-
-
-    public TipoEstadoDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public TipoEstadoDTO setNombre(String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
+    public static TipoEstadoDTO create(){
+        return new TipoEstadoDTO();
     }
-
-
-
-
 }
 

@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
@@ -10,14 +11,29 @@ public class PreferenciaEscritorDTO {
     private EscritorDTO escritor;
 
     public PreferenciaEscritorDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setPerfil(new PerfilDTO());
-        setEscritor(new EscritorDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setPerfil(PerfilDTO.create());
+        setEscritor(EscritorDTO.create());
     }
-    public PreferenciaEscritorDTO(UUID identificador, PerfilDTO perfil, EscritorDTO escritor) {
+    public PreferenciaEscritorDTO(final UUID identificador,final PerfilDTO perfil,final EscritorDTO escritor) {
         setIdentificador(identificador);
         setPerfil(perfil);
         setEscritor(escritor);
+    }
+
+    public PreferenciaEscritorDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public PreferenciaEscritorDTO setPerfil(final PerfilDTO perfil) {
+        this.perfil = UtilObject.getDefault(perfil, PerfilDTO.create());
+        return this;
+    }
+
+    public PreferenciaEscritorDTO setEscritor(final EscritorDTO escritor) {
+        this.escritor = UtilObject.getDefault(escritor, EscritorDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -32,18 +48,7 @@ public class PreferenciaEscritorDTO {
         return escritor;
     }
 
-    public PreferenciaEscritorDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public PreferenciaEscritorDTO setPerfil(PerfilDTO perfil) {
-        this.perfil = perfil;
-        return this;
-    }
-
-    public PreferenciaEscritorDTO setEscritor(EscritorDTO escritor) {
-        this.escritor = escritor;
-        return this;
+    public static PreferenciaEscritorDTO create (){
+        return new PreferenciaEscritorDTO();
     }
 }

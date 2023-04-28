@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilText;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
@@ -17,11 +18,32 @@ public class TipoIdentificacionDTO {
         setDescripcion(UtilText.getDefaultValue());
         setEstado(new EstadoDTO());
     }
-    public TipoIdentificacionDTO(UUID identificador, String nombre, String descripcion, EstadoDTO estado) {
+
+    public TipoIdentificacionDTO(final UUID identificador, final String nombre, final String descripcion, final EstadoDTO estado) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
         setEstado(estado);
+    }
+
+    public TipoIdentificacionDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public TipoIdentificacionDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public TipoIdentificacionDTO setDescripcion(final String descripcion) {
+        this.descripcion = UtilText.applyTrim(descripcion);
+        return this;
+    }
+
+    public TipoIdentificacionDTO setEstado(final EstadoDTO estado) {
+        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -40,26 +62,9 @@ public class TipoIdentificacionDTO {
         return estado;
     }
 
-    public TipoIdentificacionDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
+    public static TipoIdentificacionDTO create(){
+        return new TipoIdentificacionDTO();
     }
-
-    public TipoIdentificacionDTO setNombre(String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
-    }
-
-    public TipoIdentificacionDTO setDescripcion(String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-        return this;
-    }
-
-    public TipoIdentificacionDTO setEstado(EstadoDTO estado) {
-        this.estado = estado;
-        return this;
-    }
-
 }
 
 

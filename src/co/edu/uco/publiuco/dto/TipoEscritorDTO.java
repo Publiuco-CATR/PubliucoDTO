@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilText;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
@@ -12,16 +13,36 @@ public class TipoEscritorDTO {
     private EstadoDTO estado;
 
     public TipoEscritorDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
+        setIdentificador(UtilUUID.getDefaultValue());
         setNombre(UtilText.getDefaultValue());
         setDescripcion(UtilText.getDefaultValue());
-        setEstado(new EstadoDTO());
+        setEstado(EstadoDTO.create());
     }
-    public TipoEscritorDTO(UUID identificador, String nombre, String descripcion, EstadoDTO estado) {
+    public TipoEscritorDTO(UUID identificador, final String nombre, final String descripcion, final EstadoDTO estado) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
         setEstado(estado);
+    }
+
+    public TipoEscritorDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public TipoEscritorDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public TipoEscritorDTO setDescripcion(final String descripcion) {
+        this.descripcion = UtilText.applyTrim(descripcion);
+        return this;
+    }
+
+    public TipoEscritorDTO setEstado(final EstadoDTO estado) {
+        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -40,25 +61,8 @@ public class TipoEscritorDTO {
         return estado;
     }
 
-    public TipoEscritorDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
+    public static TipoEscritorDTO create (){
+        return new TipoEscritorDTO();
     }
-
-    public TipoEscritorDTO setNombre(String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
-    }
-
-    public TipoEscritorDTO setDescripcion(String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-        return this;
-    }
-
-    public TipoEscritorDTO setEstado(EstadoDTO estado) {
-        this.estado = estado;
-        return this;
-    }
-
 }
 

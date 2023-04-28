@@ -7,7 +7,6 @@ import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
 
-
 public final class EstadoDTO {
     private UUID identificador;
     private String nombre;

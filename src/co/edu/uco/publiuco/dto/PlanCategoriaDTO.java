@@ -2,8 +2,8 @@ package co.edu.uco.publiuco.dto;
 
 import co.edu.uco.publiuco.utils.UtilDate;
 import co.edu.uco.publiuco.utils.UtilNumber;
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
-import uco.doo.rugrats.uconnect.utils.UtilObject;
 
 import java.util.UUID;
 import java.time.LocalDateTime;

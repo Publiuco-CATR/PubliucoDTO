@@ -11,14 +11,29 @@ public class TipoRevisionDTO {
     private String descripcion;
 
     public TipoRevisionDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
+        setIdentificador(UtilUUID.getDefaultValue());
         setNombre(UtilText.getDefaultValue());
         setDescripcion(UtilText.getDefaultValue());
     }
-    public TipoRevisionDTO(UUID identificador, String nombre, String descripcion) {
+    public TipoRevisionDTO(final UUID identificador, final String nombre, final String descripcion) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
+    }
+
+    public TipoRevisionDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public TipoRevisionDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public TipoRevisionDTO setDescripcion(final String descripcion) {
+        this.descripcion = UtilText.applyTrim(descripcion);
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -33,24 +48,9 @@ public class TipoRevisionDTO {
         return descripcion;
     }
 
-
-    public TipoRevisionDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
+    public static TipoRevisionDTO create (){
+        return new TipoRevisionDTO();
     }
-
-    public TipoRevisionDTO setNombre(String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
-    }
-
-    public TipoRevisionDTO setDescripcion(String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-        return this;
-    }
-
-
-
 }
 
 

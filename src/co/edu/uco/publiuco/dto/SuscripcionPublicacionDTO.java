@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
@@ -10,14 +11,29 @@ public class SuscripcionPublicacionDTO {
     private PlanPublicacionDTO planPublicacion;
 
     public SuscripcionPublicacionDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setPerfil(new PerfilDTO());
-        setPlanPublicacion(new PlanPublicacionDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setPerfil(PerfilDTO.create());
+        setPlanPublicacion(PlanPublicacionDTO.create());
     }
-    public SuscripcionPublicacionDTO(UUID identificador, PerfilDTO perfil, PlanPublicacionDTO planPublicacion) {
+    public SuscripcionPublicacionDTO(final UUID identificador,final PerfilDTO perfil, final PlanPublicacionDTO planPublicacion) {
         setIdentificador(identificador);
         setPerfil(perfil);
         setPlanPublicacion(planPublicacion);
+    }
+
+    public SuscripcionPublicacionDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public SuscripcionPublicacionDTO setPerfil(final PerfilDTO perfil) {
+        this.perfil = UtilObject.getDefault(perfil, PerfilDTO.create());
+        return this;
+    }
+
+    public SuscripcionPublicacionDTO setPlanPublicacion(final PlanPublicacionDTO planPublicacion) {
+        this.planPublicacion = UtilObject.getDefault(planPublicacion, PlanPublicacionDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -32,18 +48,7 @@ public class SuscripcionPublicacionDTO {
         return planPublicacion;
     }
 
-    public SuscripcionPublicacionDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public SuscripcionPublicacionDTO setPerfil(PerfilDTO perfil) {
-        this.perfil = perfil;
-        return this;
-    }
-
-    public SuscripcionPublicacionDTO setPlanPublicacion(PlanPublicacionDTO planPublicacion) {
-        this.planPublicacion = planPublicacion;
-        return this;
+    public static SuscripcionPublicacionDTO create (){
+        return new SuscripcionPublicacionDTO();
     }
 }

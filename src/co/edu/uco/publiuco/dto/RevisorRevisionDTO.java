@@ -1,5 +1,7 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilDate;
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.time.LocalDateTime;
@@ -14,17 +16,47 @@ public class RevisorRevisionDTO {
     private EstadoDTO estado;
 
     public RevisorRevisionDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setRevision(new RevisionDTO());
-        setRevisor(new RevisorDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setRevision(RevisionDTO.create());
+        setRevisor(RevisorDTO.create());
     }
-    public RevisorRevisionDTO(UUID identificador, RevisionDTO revision, RevisorDTO revisor, LocalDateTime fechaAsignacionRevision, LocalDateTime fechaCompletitudRevision, EstadoDTO estado) {
+    public RevisorRevisionDTO(final UUID identificador,final RevisionDTO revision,final RevisorDTO revisor, final LocalDateTime fechaAsignacionRevision, final LocalDateTime fechaCompletitudRevision, final EstadoDTO estado) {
         setIdentificador(identificador);
         setRevision(revision);
         setRevisor(revisor);
         setFechaAsignacionRevision(fechaAsignacionRevision);
         setFechaCompletitudRevision(fechaCompletitudRevision);
         setEstado(estado);
+    }
+
+    public RevisorRevisionDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public RevisorRevisionDTO setRevision(final RevisionDTO revision) {
+        this.revision = UtilObject.getDefault(revision, RevisionDTO.create());
+        return this;
+    }
+
+    public RevisorRevisionDTO setRevisor(final RevisorDTO revisor) {
+        this.revisor = UtilObject.getDefault(revisor, RevisorDTO.create());
+        return this;
+    }
+
+    public RevisorRevisionDTO setFechaAsignacionRevision(final LocalDateTime fechaAsignacionRevision) {
+        this.fechaAsignacionRevision = UtilDate.getDefault(fechaAsignacionRevision);
+        return this;
+    }
+
+    public RevisorRevisionDTO setFechaCompletitudRevision(final LocalDateTime fechaCompletitudRevision) {
+        this.fechaCompletitudRevision = UtilDate.getDefault(fechaCompletitudRevision);
+        return this;
+    }
+
+    public RevisorRevisionDTO setEstado(final EstadoDTO estado) {
+        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -51,33 +83,7 @@ public class RevisorRevisionDTO {
         return estado;
     }
 
-    public RevisorRevisionDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public RevisorRevisionDTO setRevision(RevisionDTO revision) {
-        this.revision = revision;
-        return this;
-    }
-
-    public RevisorRevisionDTO setRevisor(RevisorDTO revisor) {
-        this.revisor = revisor;
-        return this;
-    }
-
-    public RevisorRevisionDTO setFechaAsignacionRevision(LocalDateTime fechaAsignacionRevision) {
-        this.fechaAsignacionRevision = fechaAsignacionRevision;
-        return this;
-    }
-
-    public RevisorRevisionDTO setFechaCompletitudRevision(LocalDateTime fechaCompletitudRevision) {
-        this.fechaCompletitudRevision = fechaCompletitudRevision;
-        return this;
-    }
-
-    public RevisorRevisionDTO setEstado(EstadoDTO estado) {
-        this.estado = estado;
-        return this;
+    public static RevisorRevisionDTO create (){
+        return new RevisorRevisionDTO();
     }
 }

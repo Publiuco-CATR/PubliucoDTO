@@ -11,15 +11,30 @@ public class RespuestaDTO {
     private String descripcion;
 
     public RespuestaDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
+        setIdentificador(UtilUUID.getDefaultValue());
         setNombre(UtilText.getDefaultValue());
         setDescripcion(UtilText.getDefaultValue());
     }
 
-    public RespuestaDTO(UUID identificador, String nombre, String descripcion) {
+    public RespuestaDTO(final UUID identificador, final String nombre,final String descripcion) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
+    }
+
+    public RespuestaDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public RespuestaDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public RespuestaDTO setDescripcion(final String descripcion) {
+        this.descripcion = UtilText.applyTrim(descripcion);
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -34,18 +49,7 @@ public class RespuestaDTO {
         return descripcion;
     }
 
-    public RespuestaDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public RespuestaDTO setNombre(String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
-    }
-
-    public RespuestaDTO setDescripcion(String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-        return this;
+    public static RespuestaDTO create (){
+        return new RespuestaDTO();
     }
 }

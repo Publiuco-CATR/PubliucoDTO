@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
@@ -11,16 +12,31 @@ public class LectorDTO {
 
     public LectorDTO() {
         super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setDatosPersona(new PersonaDTO());
-        setEstado(new EstadoDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setDatosPersona(PersonaDTO.create());
+        setEstado(EstadoDTO.create());
     }
 
-    public LectorDTO(UUID identificador, PersonaDTO datosPersona, EstadoDTO estado) {
+    public LectorDTO(final UUID identificador, final PersonaDTO datosPersona, final EstadoDTO estado) {
         super();
         setIdentificador(identificador);
         setDatosPersona(datosPersona);
         setEstado(estado);
+    }
+
+    public LectorDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public LectorDTO setDatosPersona(final PersonaDTO datosPersona) {
+        this.datosPersona = UtilObject.getDefault(datosPersona, PersonaDTO.create());
+        return this;
+    }
+
+    public LectorDTO setEstado(final EstadoDTO estado) {
+        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -35,18 +51,7 @@ public class LectorDTO {
         return estado;
     }
 
-    public LectorDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public LectorDTO setDatosPersona(PersonaDTO datosPersona) {
-        this.datosPersona = datosPersona;
-        return this;
-    }
-
-    public LectorDTO setEstado(EstadoDTO estado) {
-        this.estado = estado;
-        return this;
+    public static LectorDTO create (){
+        return new LectorDTO();
     }
 }

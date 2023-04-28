@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
@@ -12,19 +13,40 @@ public class PerfilDTO {
 
     public PerfilDTO() {
         super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setLector(new LectorDTO());
-        setDeseaRecibirRecomendacionesDeCategoria(new RespuestaDTO());
-        setDeseaRecibirRecomendacionesDeAutor(new RespuestaDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setLector(LectorDTO.create());
+        setDeseaRecibirRecomendacionesDeCategoria(RespuestaDTO.create());
+        setDeseaRecibirRecomendacionesDeAutor(RespuestaDTO.create());
     }
 
-    public PerfilDTO(UUID identificador, LectorDTO lector, RespuestaDTO deseaRecibirRecomendacionesDeCategoria, RespuestaDTO deseaRecibirRecomendacionesDeAutor) {
-       super();
-       setIdentificador(identificador);
-       setLector(lector);
-       setDeseaRecibirRecomendacionesDeCategoria(deseaRecibirRecomendacionesDeCategoria);
-       setDeseaRecibirRecomendacionesDeAutor(deseaRecibirRecomendacionesDeAutor);
+    public PerfilDTO(final UUID identificador,final LectorDTO lector, final RespuestaDTO deseaRecibirRecomendacionesDeCategoria, final RespuestaDTO deseaRecibirRecomendacionesDeAutor) {
+        super();
+        setIdentificador(identificador);
+        setLector(lector);
+        setDeseaRecibirRecomendacionesDeCategoria(deseaRecibirRecomendacionesDeCategoria);
+        setDeseaRecibirRecomendacionesDeAutor(deseaRecibirRecomendacionesDeAutor);
     }
+
+    public PerfilDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public PerfilDTO setLector(final LectorDTO lector) {
+        this.lector = UtilObject.getDefault(lector, LectorDTO.create());
+        return this;
+    }
+
+    public PerfilDTO setDeseaRecibirRecomendacionesDeCategoria(final RespuestaDTO deseaRecibirRecomendacionesDeCategoria) {
+        this.deseaRecibirRecomendacionesDeCategoria = UtilObject.getDefault(deseaRecibirRecomendacionesDeCategoria, RespuestaDTO.create());
+        return this;
+    }
+
+    public PerfilDTO setDeseaRecibirRecomendacionesDeAutor(final RespuestaDTO deseaRecibirRecomendacionesDeAutor) {
+        this.deseaRecibirRecomendacionesDeAutor = UtilObject.getDefault(deseaRecibirRecomendacionesDeAutor, RespuestaDTO.create());
+        return this;
+    }
+
 
     public UUID getIdentificador(){
         return identificador;
@@ -42,23 +64,7 @@ public class PerfilDTO {
         return deseaRecibirRecomendacionesDeAutor;
     }
 
-    public PerfilDTO setIdentificador(UUID identificaodr) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public PerfilDTO setLector(LectorDTO lector) {
-        this.lector = lector;
-        return this;
-    }
-
-    public PerfilDTO setDeseaRecibirRecomendacionesDeCategoria(RespuestaDTO deseaRecibirRecomendacionesDeCategoria) {
-        this.deseaRecibirRecomendacionesDeCategoria = deseaRecibirRecomendacionesDeCategoria;
-        return this;
-    }
-
-    public PerfilDTO setDeseaRecibirRecomendacionesDeAutor(RespuestaDTO deseaRecibirRecomendacionesDeAutor) {
-        this.deseaRecibirRecomendacionesDeAutor = deseaRecibirRecomendacionesDeAutor;
-        return this;
+    public static PerfilDTO create (){
+        return new PerfilDTO();
     }
 }

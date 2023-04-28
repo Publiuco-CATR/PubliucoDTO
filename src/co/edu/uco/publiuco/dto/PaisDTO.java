@@ -12,16 +12,31 @@ public class PaisDTO {
 
     public PaisDTO() {
         super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
+        setIdentificador(UtilUUID.getDefaultValue());
         setNombre(UtilText.getDefaultValue());
         setIndicadorPais(UtilText.getDefaultValue());
     }
 
-    public PaisDTO(UUID identificador, String nombre, String indicadorPais) {
+    public PaisDTO(final UUID identificador, final String nombre,final String indicadorPais) {
         super();
         setIdentificador(identificador);
         setNombre(nombre);
         setIndicadorPais(indicadorPais);
+    }
+
+    public PaisDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public PaisDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public PaisDTO setIndicadorPais(final String indicadorPais) {
+        this.indicadorPais = UtilText.applyTrim(indicadorPais);
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -36,18 +51,7 @@ public class PaisDTO {
         return indicadorPais;
     }
 
-    public PaisDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public PaisDTO setNombre(String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
-    }
-
-    public PaisDTO setIndicadorPais(String indicadorPais) {
-        this.indicadorPais = UtilText.applyTrim(indicadorPais);
-        return this;
+    public static PaisDTO create (){
+        return new PaisDTO();
     }
 }

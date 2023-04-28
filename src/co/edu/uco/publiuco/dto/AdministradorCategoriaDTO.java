@@ -1,4 +1,5 @@
 package co.edu.uco.publiuco.dto;
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
 import java.util.UUID;
@@ -7,15 +8,15 @@ public final class AdministradorCategoriaDTO {
     private UUID identificador;
     private PersonaDTO datosPersona;
     private EstadoDTO estado;
+
     public AdministradorCategoriaDTO() {
         super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setPersona(new PersonaDTO());
-        setEstado(new EstadoDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setPersona(PersonaDTO.create());
+        setEstado(EstadoDTO.create());
     }
 
-
-    public AdministradorCategoriaDTO(UUID identificador, PersonaDTO persona, EstadoDTO estado) {
+    public AdministradorCategoriaDTO(final UUID identificador,final PersonaDTO persona,final EstadoDTO estado) {
         super();
         setIdentificador(identificador);
         setPersona(persona);
@@ -28,13 +29,13 @@ public final class AdministradorCategoriaDTO {
     }
 
     public final AdministradorCategoriaDTO setPersona(final PersonaDTO datosPersona) {
-        this.datosPersona = datosPersona;
+        this.datosPersona = UtilObject.getDefault(datosPersona, PersonaDTO.create());
         return this;
     }
 
     public final AdministradorCategoriaDTO setEstado(final EstadoDTO estado) {
 
-        this.estado = estado;
+        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
 
@@ -50,10 +51,6 @@ public final class AdministradorCategoriaDTO {
         return estado;
     }
 
-    @Override
-    public String toString() {
-        return "EstadoTipoRelacionInstitucionDTO [identificador="+identificador+"]";
-    }
     public static AdministradorCategoriaDTO create (){
         return new AdministradorCategoriaDTO();
     }

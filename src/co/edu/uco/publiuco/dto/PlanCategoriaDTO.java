@@ -3,6 +3,7 @@ package co.edu.uco.publiuco.dto;
 import co.edu.uco.publiuco.utils.UtilDate;
 import co.edu.uco.publiuco.utils.UtilNumber;
 import co.edu.uco.publiuco.utils.UtilUUID;
+import uco.doo.rugrats.uconnect.utils.UtilObject;
 
 import java.util.UUID;
 import java.time.LocalDateTime;
@@ -10,29 +11,59 @@ import java.time.LocalDateTime;
 public class PlanCategoriaDTO {
     private UUID identificador;
     private CategoriaDTO categoria;
-    private double precio;
+    private Double precio;
     private LocalDateTime fechaDesde;
     private LocalDateTime fechaHasta;
     private EstadoDTO estado;
 
     public PlanCategoriaDTO() {
         super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setCategoria(new CategoriaDTO());
-        setPrecio(UtilNumber.getIntegerDefaultValue());
-        setFechaDesde(UtilDate.getDefault());
-        setFechaHasta(UtilDate.getDefault());
-        setEstado(new EstadoDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setCategoria(CategoriaDTO.create());
+        setPrecio(UtilNumber.getRealDefaultValue());
+        setFechaDesde(UtilDate.getDefaultValue());
+        setFechaHasta(UtilDate.getDefaultValue());
+        setEstado(EstadoDTO.create());
     }
 
-    public PlanCategoriaDTO(UUID identificador, CategoriaDTO categoria, double precio, LocalDateTime fechaDesde, LocalDateTime fechaHasta, EstadoDTO estado) {
-       super();
+    public PlanCategoriaDTO(final UUID identificador, final CategoriaDTO categoria, final Double precio, final LocalDateTime fechaDesde, final LocalDateTime fechaHasta,final EstadoDTO estado) {
+        super();
         setIdentificador(identificador);
-       setCategoria(categoria);
-       setPrecio(precio);
-       setFechaDesde(fechaDesde);
-       setFechaHasta(fechaHasta);
-       setEstado(estado);
+        setCategoria(categoria);
+        setPrecio(precio);
+        setFechaDesde(fechaDesde);
+        setFechaHasta(fechaHasta);
+        setEstado(estado);
+    }
+
+    public PlanCategoriaDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public PlanCategoriaDTO setCategoria(final CategoriaDTO categoria) {
+        this.categoria = UtilObject.getDefault(categoria, CategoriaDTO.create());
+        return this;
+    }
+
+    public PlanCategoriaDTO setPrecio(final Double precio) {
+        this.precio = UtilNumber.getDefaultReal(precio);
+        return this;
+    }
+
+    public PlanCategoriaDTO setFechaDesde(final LocalDateTime fechaDesde) {
+        this.fechaDesde = UtilDate.getDefault(fechaDesde);
+        return this;
+    }
+
+    public PlanCategoriaDTO setFechaHasta(final LocalDateTime fechaHasta) {
+        this.fechaHasta = UtilDate.getDefault(fechaHasta);
+        return this;
+    }
+
+    public PlanCategoriaDTO setEstado(final EstadoDTO estado) {
+        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -43,7 +74,7 @@ public class PlanCategoriaDTO {
         return categoria;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
@@ -59,33 +90,7 @@ public class PlanCategoriaDTO {
         return estado;
     }
 
-    public PlanCategoriaDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public PlanCategoriaDTO setCategoria(CategoriaDTO categoria) {
-        this.categoria = categoria;
-        return this;
-    }
-
-    public PlanCategoriaDTO setPrecio(double precio) {
-        this.precio = precio;
-        return this;
-    }
-
-    public PlanCategoriaDTO setFechaDesde(LocalDateTime fechaDesde) {
-        this.fechaDesde = fechaDesde;
-        return this;
-    }
-
-    public PlanCategoriaDTO setFechaHasta(LocalDateTime fechaHasta) {
-        this.fechaHasta = fechaHasta;
-        return this;
-    }
-
-    public PlanCategoriaDTO setEstado(EstadoDTO estado) {
-        this.estado = estado;
-        return this;
+    public static PlanCategoriaDTO create (){
+        return new PlanCategoriaDTO();
     }
 }

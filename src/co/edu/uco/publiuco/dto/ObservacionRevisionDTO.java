@@ -1,6 +1,7 @@
 package co.edu.uco.publiuco.dto;
 
 import co.edu.uco.publiuco.utils.UtilDate;
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilText;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
@@ -18,16 +19,16 @@ public class ObservacionRevisionDTO {
 
     public ObservacionRevisionDTO() {
         super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setEscritorPublicacion(new EscritorPublicacionDTO());
-        setComentarioRevisor(new ComentarioRevisorDTO());
-        setFechaReportePublicacion(UtilDate.getDefault());
-        setFechaRevisionObservacion(UtilDate.getDefault());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setEscritorPublicacion(EscritorPublicacionDTO.create());
+        setComentarioRevisor(ComentarioRevisorDTO.create());
+        setFechaReportePublicacion(UtilDate.getDefaultValue());
+        setFechaRevisionObservacion(UtilDate.getDefaultValue());
         setObservacion(UtilText.getDefaultValue());
-        setEstado(new EstadoDTO());
+        setEstado(EstadoDTO.create());
     }
 
-    public ObservacionRevisionDTO(UUID identificador, EscritorPublicacionDTO escritorPublicacion, ComentarioRevisorDTO comentarioRevisor, LocalDateTime fechaReportePublicacion, LocalDateTime fechaRevisionObservacion, String observacion, EstadoDTO estado) {
+    public ObservacionRevisionDTO(final UUID identificador, final EscritorPublicacionDTO escritorPublicacion,final ComentarioRevisorDTO comentarioRevisor,final LocalDateTime fechaReportePublicacion, final LocalDateTime fechaRevisionObservacion,final String observacion, final EstadoDTO estado) {
         super();
         setIdentificador(identificador);
         setEscritorPublicacion(escritorPublicacion);
@@ -36,6 +37,42 @@ public class ObservacionRevisionDTO {
         setFechaRevisionObservacion(fechaRevisionObservacion);
         setObservacion(observacion);
         setEstado(estado);
+    }
+
+
+    public ObservacionRevisionDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public ObservacionRevisionDTO setEscritorPublicacion(final EscritorPublicacionDTO escritorPublicacion) {
+        this.escritorPublicacion = UtilObject.getDefault(escritorPublicacion, EscritorPublicacionDTO.create());
+        return this;
+    }
+
+    public ObservacionRevisionDTO setComentarioRevisor(final ComentarioRevisorDTO comentarioRevisor) {
+        this.comentarioRevisor = UtilObject.getDefault(comentarioRevisor, ComentarioRevisorDTO.create());
+        return this;
+    }
+
+    public ObservacionRevisionDTO setFechaReportePublicacion(final LocalDateTime fechaReportePublicacion) {
+        this.fechaReportePublicacion = UtilDate.getDefault(fechaReportePublicacion);
+        return this;
+    }
+
+    public ObservacionRevisionDTO setFechaRevisionObservacion(final LocalDateTime fechaRevisionObservacion) {
+        this.fechaRevisionObservacion = UtilDate.getDefault(fechaRevisionObservacion);
+        return this;
+    }
+
+    public ObservacionRevisionDTO setObservacion(final String observacion) {
+        this.observacion = UtilText.applyTrim(observacion);
+        return this;
+    }
+
+    public ObservacionRevisionDTO setEstado(final EstadoDTO estado) {
+        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -66,38 +103,7 @@ public class ObservacionRevisionDTO {
         return estado;
     }
 
-    public ObservacionRevisionDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public ObservacionRevisionDTO setEscritorPublicacion(EscritorPublicacionDTO escritorPublicacion) {
-        this.escritorPublicacion = escritorPublicacion;
-        return this;
-    }
-
-    public ObservacionRevisionDTO setComentarioRevisor(ComentarioRevisorDTO comentarioRevisor) {
-        this.comentarioRevisor = comentarioRevisor;
-        return this;
-    }
-
-    public ObservacionRevisionDTO setFechaReportePublicacion(LocalDateTime fechaReportePublicacion) {
-        this.fechaReportePublicacion = fechaReportePublicacion;
-        return this;
-    }
-
-    public ObservacionRevisionDTO setFechaRevisionObservacion(LocalDateTime fechaRevisionObservacion) {
-        this.fechaRevisionObservacion = fechaRevisionObservacion;
-        return this;
-    }
-
-    public ObservacionRevisionDTO setObservacion(String observacion) {
-        this.observacion = UtilText.applyTrim(observacion);
-        return this;
-    }
-
-    public ObservacionRevisionDTO setEstado(EstadoDTO estado) {
-        this.estado = estado;
-        return this;
+    public static ObservacionRevisionDTO create (){
+        return new ObservacionRevisionDTO();
     }
 }

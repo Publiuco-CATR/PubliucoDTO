@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilText;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
@@ -12,16 +13,31 @@ public class PalabraClavePublicacionDTO {
 
     public PalabraClavePublicacionDTO() {
         super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setPublicacion(new PublicacionDTO());
+        setIdentificador(UtilUUID.getDefaultValue());
+        setPublicacion(PublicacionDTO.create());
         setPalabraClave(UtilText.getDefaultValue());
     }
 
-    public PalabraClavePublicacionDTO(UUID identificador, PublicacionDTO publicacion, String palabraClave) {
+    public PalabraClavePublicacionDTO(final UUID identificador, final PublicacionDTO publicacion, final String palabraClave) {
         super();
         setIdentificador(identificador);
         setPublicacion(publicacion);
         setPalabraClave(palabraClave);
+    }
+
+    public PalabraClavePublicacionDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public PalabraClavePublicacionDTO setPublicacion(final PublicacionDTO publicacion) {
+        this.publicacion = UtilObject.getDefault(publicacion,PublicacionDTO.create());
+        return this;
+    }
+
+    public PalabraClavePublicacionDTO setPalabraClave(final String palabraClave) {
+        this.palabraClave = UtilText.applyTrim(palabraClave);
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -36,18 +52,7 @@ public class PalabraClavePublicacionDTO {
         return palabraClave;
     }
 
-    public PalabraClavePublicacionDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
-    }
-
-    public PalabraClavePublicacionDTO setPublicacion(PublicacionDTO publicacion) {
-        this.publicacion = publicacion;
-        return this;
-    }
-
-    public PalabraClavePublicacionDTO setPalabraClave(String palabraClave) {
-        this.palabraClave = UtilText.applyTrim(palabraClave);
-        return this;
+    public static PalabraClavePublicacionDTO create (){
+        return new PalabraClavePublicacionDTO();
     }
 }

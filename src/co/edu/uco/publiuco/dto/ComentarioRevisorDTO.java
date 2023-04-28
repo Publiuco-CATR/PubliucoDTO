@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.dto;
 
+import co.edu.uco.publiuco.utils.UtilObject;
 import co.edu.uco.publiuco.utils.UtilText;
 import co.edu.uco.publiuco.utils.UtilUUID;
 
@@ -11,7 +12,15 @@ public class ComentarioRevisorDTO {
     private TipoComentarioRevisorDTO tipoComentarioRevisor;
     private String comentario;
 
-    public ComentarioRevisorDTO(UUID identificador, RevisorRevisionDTO revisorRevision, TipoComentarioRevisorDTO tipoComentarioRevisor, String comentario) {
+    public ComentarioRevisorDTO() {
+        super();
+        setIdentificador(UtilUUID.getDefaultValue());
+        setRevisorRevision(RevisorRevisionDTO.create());
+        setTipoComentarioRevisor(TipoComentarioRevisorDTO.create());
+        setComentario(UtilText.getDefaultValue());
+    }
+
+    public ComentarioRevisorDTO(final UUID identificador,final RevisorRevisionDTO revisorRevision,final TipoComentarioRevisorDTO tipoComentarioRevisor, final String comentario) {
         super();
         setIdentificador(identificador);
         setRevisorRevision(revisorRevision);
@@ -19,13 +28,25 @@ public class ComentarioRevisorDTO {
         setComentario(comentario);
 
     }
-    public ComentarioRevisorDTO() {
-        super();
-        setIdentificador(UtilUUID.DEFAULT_UUID);
-        setRevisorRevision(new RevisorRevisionDTO());
-        setTipoComentarioRevisor(new TipoComentarioRevisorDTO());
-        setComentario(UtilText.getDefaultValue());
 
+    public ComentarioRevisorDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public ComentarioRevisorDTO setRevisorRevision(final RevisorRevisionDTO revisorRevision) {
+        this.revisorRevision = UtilObject.getDefault(revisorRevision, RevisorRevisionDTO.create());
+        return this;
+    }
+
+    public ComentarioRevisorDTO setTipoComentarioRevisor(final TipoComentarioRevisorDTO tipoComentarioRevisor) {
+        this.tipoComentarioRevisor = UtilObject.getDefault(tipoComentarioRevisor, TipoComentarioRevisorDTO.create());
+        return this;
+    }
+
+    public ComentarioRevisorDTO setComentario(final String comentario) {
+        this.comentario = UtilText.applyTrim(comentario);
+        return this;
     }
 
     public UUID getIdentificador() {
@@ -44,23 +65,8 @@ public class ComentarioRevisorDTO {
         return comentario;
     }
 
-    public ComentarioRevisorDTO setIdentificador(UUID identificador) {
-        this.identificador = identificador;
-        return this;
+    public static ComentarioRevisorDTO create (){
+        return new ComentarioRevisorDTO();
     }
 
-    public ComentarioRevisorDTO setRevisorRevision(RevisorRevisionDTO revisorRevision) {
-        this.revisorRevision = revisorRevision;
-        return this;
-    }
-
-    public ComentarioRevisorDTO setTipoComentarioRevisor(TipoComentarioRevisorDTO tipoComentarioRevisor) {
-        this.tipoComentarioRevisor = tipoComentarioRevisor;
-        return this;
-    }
-
-    public ComentarioRevisorDTO setComentario(String comentario) {
-        this.comentario = UtilText.applyTrim(comentario);
-        return this;
-    }
 }

@@ -17,7 +17,7 @@ public class TipoEstadoDTO {
         setDescripcion(UtilText.getDefaultValue());
     }
 
-    public TipoEstadoDTO(final UUID identificador, final String nombre) {
+    public TipoEstadoDTO(final UUID identificador, final String nombre, final String descripcion) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);

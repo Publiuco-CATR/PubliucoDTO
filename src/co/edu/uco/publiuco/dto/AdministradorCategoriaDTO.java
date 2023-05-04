@@ -43,7 +43,7 @@ public final class AdministradorCategoriaDTO {
         return identificador;
     }
 
-    public final PersonaDTO getNombre() {
+    public final PersonaDTO getPersona() {
         return datosPersona;
     }
 

@@ -30,11 +30,6 @@ public final class ComentarioLectorDTO {
 		setEstado(EstadoDTO.create() );
 	}
 
-
-	public static void main(String[] args) {
-		ComentarioLectorDTO comentarioLectorDTO = ComentarioLectorDTO.create();
-	}
-
 	public ComentarioLectorDTO(final UUID identificador, final LectorDTO lector, final PublicacionDTO publicacion, final ComentarioLectorDTO comentarioPadre, final String contenido, final LocalDateTime fechaCalificacion, final EstadoDTO estado) {
 		super();
 		setIdentificador(identificador);

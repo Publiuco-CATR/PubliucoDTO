@@ -11,6 +11,7 @@ public final class EstadoDTO {
     private UUID identificador;
     private String nombre;
     private TipoEstadoDTO tipoEstado;
+    private String descripcion;
 
 
     public EstadoDTO() {
@@ -37,6 +38,11 @@ public final class EstadoDTO {
         this.nombre = UtilText.applyTrim(nombre);
         return this;
     }
+    
+    public EstadoDTO setDescripcion(String descripcion) {
+		this.descripcion = UtilText.applyTrim(descripcion);
+		return this;
+	}
 
     public final EstadoDTO setTipoEstado(final TipoEstadoDTO tipoEstado) {
 
@@ -55,6 +61,10 @@ public final class EstadoDTO {
     public final TipoEstadoDTO getTipoEstado() {
         return tipoEstado;
     }
+    
+    public String getDescripcion() {
+		return descripcion;
+	}
 
     public static EstadoDTO create (){
         return new EstadoDTO();

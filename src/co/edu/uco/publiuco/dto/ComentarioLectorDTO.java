@@ -14,7 +14,7 @@ public final class ComentarioLectorDTO {
 	private PublicacionDTO publicacion;
 	private ComentarioLectorDTO comentarioPadre;
 	private String cotenido;
-	private LocalDateTime fechaCalificacion;
+	private LocalDateTime fechaComentario;
 	private EstadoDTO estado;
 
 	private static final ComentarioLectorDTO INSTANCE_DEFAULT = ComentarioLectorDTO.create();
@@ -26,7 +26,7 @@ public final class ComentarioLectorDTO {
 		setPublicacion(PublicacionDTO.create());
 		setComentarioPadre(getDefaultValue());
 		setCotenido(UtilText.getDefaultValue());
-		setFechaCalificacion(UtilDate.getDefaultValue());
+		setFechaComentario(UtilDate.getDefaultValue());
 		setEstado(EstadoDTO.create() );
 	}
 
@@ -37,7 +37,7 @@ public final class ComentarioLectorDTO {
 		setComentarioPadre(comentarioPadre);
 		setPublicacion(publicacion);
 		setCotenido(contenido);
-		setFechaCalificacion(fechaCalificacion);
+		setFechaComentario(fechaCalificacion);
 		setEstado(estado);
 	}
 
@@ -71,8 +71,8 @@ public final class ComentarioLectorDTO {
 		return this;
 	}
 
-	public ComentarioLectorDTO setFechaCalificacion(final LocalDateTime fechaCalificacion) {
-		this.fechaCalificacion = fechaCalificacion;
+	public ComentarioLectorDTO setFechaComentario(final LocalDateTime fechaCalificacion) {
+		this.fechaComentario = fechaCalificacion;
 		return this;
 	}
 
@@ -100,8 +100,8 @@ public final class ComentarioLectorDTO {
 		return cotenido;
 	}
 
-	public LocalDateTime getFechaCalificacion() {
-		return fechaCalificacion;
+	public LocalDateTime getFechaComentario() {
+		return fechaComentario;
 	}
 
 	public EstadoDTO getEstado() {

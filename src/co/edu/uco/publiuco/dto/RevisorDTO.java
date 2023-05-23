@@ -15,10 +15,22 @@ public class RevisorDTO {
         setDatosPersona(PersonaDTO.create());
         setEstado(EstadoDTO.create());
     }
-    public RevisorDTO(final UUID identificador, final PersonaDTO datosPersona, final EstadoDTO estado) {
+    public RevisorDTO(UUID identificador, PersonaDTO datosPersona, EstadoDTO estado) {
         setIdentificador(identificador);
         setDatosPersona(datosPersona);
         setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PersonaDTO getDatosPersona() {
+        return datosPersona;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public RevisorDTO setIdentificador(final UUID identificador) {
@@ -35,19 +47,6 @@ public class RevisorDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PersonaDTO getDatosPersona() {
-        return datosPersona;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static RevisorDTO create (){
         return new RevisorDTO();
     }

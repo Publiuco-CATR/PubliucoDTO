@@ -26,14 +26,38 @@ public class PlanCategoriaDTO {
         setEstado(EstadoDTO.create());
     }
 
-    public PlanCategoriaDTO(final UUID identificador, final CategoriaDTO categoria, final Double precio, final LocalDateTime fechaDesde, final LocalDateTime fechaHasta,final EstadoDTO estado) {
-        super();
-        setIdentificador(identificador);
-        setCategoria(categoria);
-        setPrecio(precio);
-        setFechaDesde(fechaDesde);
-        setFechaHasta(fechaHasta);
-        setEstado(estado);
+    public PlanCategoriaDTO(UUID identificador, CategoriaDTO categoria, Double precio, LocalDateTime fechaDesde, LocalDateTime fechaHasta, EstadoDTO estado) {
+       super();
+       setIdentificador(identificador);
+       setCategoria(categoria);
+       setPrecio(precio);
+       setFechaDesde(fechaDesde);
+       setFechaHasta(fechaHasta);
+       setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public CategoriaDTO getCategoria() {
+        return categoria;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public LocalDateTime getFechaDesde() {
+        return fechaDesde;
+    }
+
+    public LocalDateTime getFechaHasta() {
+        return fechaHasta;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public PlanCategoriaDTO setIdentificador(final UUID identificador) {
@@ -65,31 +89,6 @@ public class PlanCategoriaDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public CategoriaDTO getCategoria() {
-        return categoria;
-    }
-
-    public Double getPrecio() {
-        return precio;
-    }
-
-    public LocalDateTime getFechaDesde() {
-        return fechaDesde;
-    }
-
-    public LocalDateTime getFechaHasta() {
-        return fechaHasta;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static PlanCategoriaDTO create (){
         return new PlanCategoriaDTO();
     }

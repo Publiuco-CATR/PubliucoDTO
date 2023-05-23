@@ -18,11 +18,23 @@ public class PalabraClavePublicacionDTO {
         setPalabraClave(UtilText.getDefaultValue());
     }
 
-    public PalabraClavePublicacionDTO(final UUID identificador, final PublicacionDTO publicacion, final String palabraClave) {
+    public PalabraClavePublicacionDTO(UUID identificador, PublicacionDTO publicacion, String palabraClave) {
         super();
         setIdentificador(identificador);
         setPublicacion(publicacion);
         setPalabraClave(palabraClave);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PublicacionDTO getPublicacion() {
+        return publicacion;
+    }
+
+    public String getPalabraClave() {
+        return palabraClave;
     }
 
     public PalabraClavePublicacionDTO setIdentificador(final UUID identificador) {
@@ -39,19 +51,6 @@ public class PalabraClavePublicacionDTO {
         this.palabraClave = UtilText.applyTrim(palabraClave);
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PublicacionDTO getPublicacion() {
-        return publicacion;
-    }
-
-    public String getPalabraClave() {
-        return palabraClave;
-    }
-
     public static PalabraClavePublicacionDTO create (){
         return new PalabraClavePublicacionDTO();
     }

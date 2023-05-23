@@ -21,12 +21,28 @@ public class HistorialAccesoPublicacionDTO {
         setFechaAcceso(UtilDate.getDefaultValue());
     }
 
-    public HistorialAccesoPublicacionDTO(final UUID identificador,final LectorDTO lector,final PublicacionDTO publicacion, final LocalDateTime fechaAcceso) {
+    public HistorialAccesoPublicacionDTO(UUID identificador, LectorDTO lector, PublicacionDTO publicacion, LocalDateTime fechaAcceso) {
         super();
         setIdentificador(identificador);
         setLector(lector);
         setPublicacion(publicacion);
         setFechaAcceso(fechaAcceso);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public LectorDTO getLector() {
+        return lector;
+    }
+
+    public PublicacionDTO getPublicacion() {
+        return publicacion;
+    }
+
+    public LocalDateTime getFechaAcceso() {
+        return fechaAcceso;
     }
 
     public HistorialAccesoPublicacionDTO setIdentificador(final UUID identificador) {
@@ -48,23 +64,6 @@ public class HistorialAccesoPublicacionDTO {
         this.fechaAcceso = UtilDate.getDefault(fechaAcceso);
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public LectorDTO getLector() {
-        return lector;
-    }
-
-    public PublicacionDTO getPublicacion() {
-        return publicacion;
-    }
-
-    public LocalDateTime getFechaAcceso() {
-        return fechaAcceso;
-    }
-
     public static HistorialAccesoPublicacionDTO create (){
         return new HistorialAccesoPublicacionDTO();
     }

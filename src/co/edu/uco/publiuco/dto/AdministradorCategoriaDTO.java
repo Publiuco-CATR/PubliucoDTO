@@ -5,10 +5,9 @@ import co.edu.uco.publiuco.utils.UtilUUID;
 import java.util.UUID;
 
 public final class AdministradorCategoriaDTO {
-    private UUID identificador;
+	private UUID identificador;
     private PersonaDTO datosPersona;
     private EstadoDTO estado;
-
     public AdministradorCategoriaDTO() {
         super();
         setIdentificador(UtilUUID.getDefaultValue());
@@ -16,7 +15,8 @@ public final class AdministradorCategoriaDTO {
         setEstado(EstadoDTO.create());
     }
 
-    public AdministradorCategoriaDTO(final UUID identificador,final PersonaDTO persona,final EstadoDTO estado) {
+
+    public AdministradorCategoriaDTO(UUID identificador, PersonaDTO persona, EstadoDTO estado) {
         super();
         setIdentificador(identificador);
         setPersona(persona);

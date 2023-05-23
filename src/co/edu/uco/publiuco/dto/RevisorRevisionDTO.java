@@ -19,14 +19,42 @@ public class RevisorRevisionDTO {
         setIdentificador(UtilUUID.getDefaultValue());
         setRevision(RevisionDTO.create());
         setRevisor(RevisorDTO.create());
+        setFechaAsignacionRevision(UtilDate.getDefaultValue());
+        setFechaCompletitudRevision(UtilDate.getDefaultValue());
+        setEstado(EstadoDTO.create());
+
     }
-    public RevisorRevisionDTO(final UUID identificador,final RevisionDTO revision,final RevisorDTO revisor, final LocalDateTime fechaAsignacionRevision, final LocalDateTime fechaCompletitudRevision, final EstadoDTO estado) {
+    public RevisorRevisionDTO(UUID identificador, RevisionDTO revision, RevisorDTO revisor, LocalDateTime fechaAsignacionRevision, LocalDateTime fechaCompletitudRevision, EstadoDTO estado) {
         setIdentificador(identificador);
         setRevision(revision);
         setRevisor(revisor);
         setFechaAsignacionRevision(fechaAsignacionRevision);
         setFechaCompletitudRevision(fechaCompletitudRevision);
         setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public RevisionDTO getRevision() {
+        return revision;
+    }
+
+    public RevisorDTO getRevisor() {
+        return revisor;
+    }
+
+    public LocalDateTime getFechaAsignacionRevision() {
+        return fechaAsignacionRevision;
+    }
+
+    public LocalDateTime getFechaCompletitudRevision() {
+        return fechaCompletitudRevision;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public RevisorRevisionDTO setIdentificador(final UUID identificador) {
@@ -58,31 +86,6 @@ public class RevisorRevisionDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public RevisionDTO getRevision() {
-        return revision;
-    }
-
-    public RevisorDTO getRevisor() {
-        return revisor;
-    }
-
-    public LocalDateTime getFechaAsignacionRevision() {
-        return fechaAsignacionRevision;
-    }
-
-    public LocalDateTime getFechaCompletitudRevision() {
-        return fechaCompletitudRevision;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static RevisorRevisionDTO create (){
         return new RevisorRevisionDTO();
     }

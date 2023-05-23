@@ -16,10 +16,22 @@ public class SuscripcionCategoriaDTO {
         setPlanCategoria(PlanCategoriaDTO.create());
     }
 
-    public SuscripcionCategoriaDTO(final UUID identificador,final PerfilDTO perfil, final PlanCategoriaDTO planCategoria) {
+    public SuscripcionCategoriaDTO(UUID identificador, PerfilDTO perfil, PlanCategoriaDTO planCategoria) {
         setIdentificador(identificador);
         setPerfil(perfil);
         setPlanCategoria(planCategoria);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PerfilDTO getPerfil() {
+        return perfil;
+    }
+
+    public PlanCategoriaDTO getPlanCategoria() {
+        return planCategoria;
     }
 
     public SuscripcionCategoriaDTO setIdentificador(final UUID identificador) {
@@ -36,19 +48,6 @@ public class SuscripcionCategoriaDTO {
         this.planCategoria = UtilObject.getDefault(planCategoria, PlanCategoriaDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PerfilDTO getPerfil() {
-        return perfil;
-    }
-
-    public PlanCategoriaDTO getPlanCategoria() {
-        return planCategoria;
-    }
-
     public static SuscripcionCategoriaDTO create (){
         return new SuscripcionCategoriaDTO();
     }

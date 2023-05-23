@@ -17,11 +17,23 @@ public class LectorDTO {
         setEstado(EstadoDTO.create());
     }
 
-    public LectorDTO(final UUID identificador, final PersonaDTO datosPersona, final EstadoDTO estado) {
+    public LectorDTO(UUID identificador, PersonaDTO datosPersona, EstadoDTO estado) {
         super();
         setIdentificador(identificador);
         setDatosPersona(datosPersona);
         setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PersonaDTO getDatosPersona() {
+        return datosPersona;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public LectorDTO setIdentificador(final UUID identificador) {
@@ -38,19 +50,6 @@ public class LectorDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PersonaDTO getDatosPersona() {
-        return datosPersona;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static LectorDTO create (){
         return new LectorDTO();
     }

@@ -24,13 +24,37 @@ public class PublicacionDTO {
         setEstado(EstadoDTO.create());
     }
 
-    public PublicacionDTO(final UUID identificador,final CategoriaDTO categoria,final TipoAccesoDTO tipoAcceso, final LocalDateTime fechaPublicacion, final VersionDTO versionPublicada,final EstadoDTO estado) {
+    public PublicacionDTO(UUID identificador, CategoriaDTO categoria, TipoAccesoDTO tipoAcceso, LocalDateTime fechaPublicacion, VersionDTO versionPublicada, EstadoDTO estado) {
         setIdentificador(identificador);
         setCategoria(categoria);
         setTipoAcceso(tipoAcceso);
         setFechaPublicacion(fechaPublicacion);
         setVersionPublicada(versionPublicada);
         setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public CategoriaDTO getCategoria() {
+        return categoria;
+    }
+
+    public TipoAccesoDTO getTipoAcceso() {
+        return tipoAcceso;
+    }
+
+    public LocalDateTime getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public VersionDTO getVersionPublicada() {
+        return versionPublicada;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public PublicacionDTO setIdentificador(final UUID identificador) {
@@ -62,31 +86,6 @@ public class PublicacionDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public CategoriaDTO getCategoria() {
-        return categoria;
-    }
-
-    public TipoAccesoDTO getTipoAcceso() {
-        return tipoAcceso;
-    }
-
-    public LocalDateTime getFechaPublicacion() {
-        return fechaPublicacion;
-    }
-
-    public VersionDTO getVersionPublicada() {
-        return versionPublicada;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static PublicacionDTO create (){
         return new PublicacionDTO();
     }

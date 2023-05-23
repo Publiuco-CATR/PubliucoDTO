@@ -21,21 +21,6 @@ public class TipoComentarioRevisorDTO {
         setDescripcion(descripcion);
     }
 
-    public TipoComentarioRevisorDTO setIdentificador(UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-        return this;
-    }
-
-    public TipoComentarioRevisorDTO setNombre(String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
-    }
-
-    public TipoComentarioRevisorDTO setDescripcion(String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-        return this;
-    }
-
     public UUID getIdentificador() {
         return identificador;
     }
@@ -46,6 +31,22 @@ public class TipoComentarioRevisorDTO {
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+
+    public TipoComentarioRevisorDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public TipoComentarioRevisorDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public TipoComentarioRevisorDTO setDescripcion(final String descripcion) {
+        this.descripcion = UtilText.applyTrim(descripcion);
+        return this;
     }
 
     public static TipoComentarioRevisorDTO create (){

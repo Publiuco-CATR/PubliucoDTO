@@ -16,10 +16,22 @@ public class RespuestaDTO {
         setDescripcion(UtilText.getDefaultValue());
     }
 
-    public RespuestaDTO(final UUID identificador, final String nombre,final String descripcion) {
+    public RespuestaDTO(UUID identificador, String nombre, String descripcion) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public RespuestaDTO setIdentificador(final UUID identificador) {
@@ -36,19 +48,6 @@ public class RespuestaDTO {
         this.descripcion = UtilText.applyTrim(descripcion);
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
     public static RespuestaDTO create (){
         return new RespuestaDTO();
     }

@@ -18,11 +18,27 @@ public class TipoAccesoDTO {
         setDescripcion(UtilText.getDefaultValue());
         setEstado(EstadoDTO.create());
     }
-    public TipoAccesoDTO(final UUID identificador,final String nombre, final String descripcion, final EstadoDTO estado) {
+    public TipoAccesoDTO(UUID identificador, String nombre, String descripcion, EstadoDTO estado) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
         setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public TipoAccesoDTO setIdentificador(final UUID identificador) {
@@ -44,24 +60,8 @@ public class TipoAccesoDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static TipoAccesoDTO create (){
         return new TipoAccesoDTO();
     }
+
 }

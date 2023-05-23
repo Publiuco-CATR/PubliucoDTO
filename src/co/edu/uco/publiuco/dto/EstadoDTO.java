@@ -10,26 +10,39 @@ import java.util.UUID;
 public final class EstadoDTO {
     private UUID identificador;
     private String nombre;
-    private TipoEstadoDTO tipoEstado;
     private String descripcion;
+    private TipoEstadoDTO tipo;
 
 
     public EstadoDTO() {
         super();
         setIdentificador(UtilUUID.getDefaultValue());
         setNombre(UtilText.getDefaultValue());
-        setTipoEstado(TipoEstadoDTO.create());
+        setDescripcion(UtilText.getDefaultValue());
+        setTipo(TipoEstadoDTO.create());
     }
 
 
-    public EstadoDTO(final UUID identificador,final String nombre,final TipoEstadoDTO tipoEstado) {
+    public EstadoDTO(UUID identificador, String nombre, TipoEstadoDTO tipo, String descripcion) {
         super();
         setIdentificador(identificador);
         setNombre(nombre);
-        setTipoEstado(tipoEstado);
+        setDescripcion(descripcion);
+        setTipo(tipo);
     }
 
-    public final EstadoDTO setIdentificador(final UUID identificador) {
+    public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	public final EstadoDTO setDescripcion(String descripcion) {
+		this.descripcion = UtilText.applyTrim(descripcion);
+		return this;
+	}
+
+
+	public final EstadoDTO setIdentificador(final UUID identificador) {
         this.identificador = UtilUUID.getDefault(identificador);
         return this;
     }
@@ -38,15 +51,10 @@ public final class EstadoDTO {
         this.nombre = UtilText.applyTrim(nombre);
         return this;
     }
-    
-    public EstadoDTO setDescripcion(String descripcion) {
-		this.descripcion = UtilText.applyTrim(descripcion);
-		return this;
-	}
 
-    public final EstadoDTO setTipoEstado(final TipoEstadoDTO tipoEstado) {
+    public final EstadoDTO setTipo(final TipoEstadoDTO tipoEstado) {
 
-        this.tipoEstado = UtilObject.getDefault(tipoEstado, TipoEstadoDTO.create());
+        this.tipo = UtilObject.getDefault(tipoEstado, TipoEstadoDTO.create());
         return this;
     }
 
@@ -58,16 +66,11 @@ public final class EstadoDTO {
         return nombre;
     }
 
-    public final TipoEstadoDTO getTipoEstado() {
-        return tipoEstado;
+    public final TipoEstadoDTO getTipo() {
+        return tipo;
     }
-    
-    public String getDescripcion() {
-		return descripcion;
-	}
 
     public static EstadoDTO create (){
         return new EstadoDTO();
     }
-
 }

@@ -13,36 +13,16 @@ public class TipoRelacionInstitucionDTO {
     private EstadoDTO estado;
 
     public TipoRelacionInstitucionDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
+        setIdentificador(UtilUUID.getDefaultValue());
         setNombre(UtilText.getDefaultValue());
         setDescripcion(UtilText.getDefaultValue());
-        setEstado(new EstadoDTO());
+        setEstado(EstadoDTO.create());
     }
-
-    public TipoRelacionInstitucionDTO(final UUID identificador, final String nombre,final String descripcion, final EstadoDTO estado) {
+    public TipoRelacionInstitucionDTO(UUID identificador, String nombre, String descripcion, EstadoDTO estado) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
         setEstado(estado);
-    }
-    public TipoRelacionInstitucionDTO setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-        return this;
-    }
-
-    public TipoRelacionInstitucionDTO setNombre(final String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-        return this;
-    }
-
-    public TipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-        return this;
-    }
-
-    public TipoRelacionInstitucionDTO setEstado(final EstadoDTO estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
-        return this;
     }
 
     public UUID getIdentificador() {
@@ -61,7 +41,26 @@ public class TipoRelacionInstitucionDTO {
         return estado;
     }
 
-    public static TipoRelacionInstitucionDTO create(){
+    public TipoRelacionInstitucionDTO setIdentificador(final UUID identificador) {
+        this.identificador = UtilUUID.getDefault(identificador);
+        return this;
+    }
+
+    public TipoRelacionInstitucionDTO setNombre(final String nombre) {
+        this.nombre = UtilText.applyTrim(nombre);
+        return this;
+    }
+
+    public TipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
+        this.descripcion = UtilText.applyTrim(descripcion);
+        return this;
+    }
+
+    public TipoRelacionInstitucionDTO setEstado(final EstadoDTO estado) {
+        this.estado = estado;
+        return this;
+    }
+    public static TipoRelacionInstitucionDTO create (){
         return new TipoRelacionInstitucionDTO();
     }
 }

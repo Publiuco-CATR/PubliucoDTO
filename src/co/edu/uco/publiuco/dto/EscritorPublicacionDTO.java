@@ -9,22 +9,38 @@ public class EscritorPublicacionDTO {
     private UUID identificador;
     private PublicacionDTO publicacion;
     private EscritorDTO escritor;
-    private TipoEscritorDTO tipoEscritor;
+    private TipoEscritorDTO tipo;
 
     public EscritorPublicacionDTO() {
         super();
         setIdentificador(UtilUUID.getDefaultValue());
         setPublicacion(PublicacionDTO.create());
         setEscritor(EscritorDTO.create());
-        setTipoEscritor(TipoEscritorDTO.create());
+        setTipo(TipoEscritorDTO.create());
     }
 
-    public EscritorPublicacionDTO(final UUID identificador,final PublicacionDTO publicacion,final EscritorDTO escritor, final TipoEscritorDTO tipoEscritor) {
+    public EscritorPublicacionDTO(UUID identificador, PublicacionDTO publicacion, EscritorDTO escritor, TipoEscritorDTO tipo) {
         super();
         setIdentificador(identificador);
         setPublicacion(publicacion);
         setEscritor(escritor);
-        setTipoEscritor(tipoEscritor);
+        setTipo(tipo);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PublicacionDTO getPublicacion() {
+        return publicacion;
+    }
+
+    public EscritorDTO getEscritor() {
+        return escritor;
+    }
+
+    public TipoEscritorDTO getTipo() {
+        return tipo;
     }
 
     public EscritorPublicacionDTO setIdentificador(final UUID identificador) {
@@ -42,27 +58,10 @@ public class EscritorPublicacionDTO {
         return this;
     }
 
-    public EscritorPublicacionDTO setTipoEscritor(final TipoEscritorDTO tipoEscritor) {
-        this.tipoEscritor = UtilObject.getDefault(tipoEscritor, TipoEscritorDTO.create());
+    public EscritorPublicacionDTO setTipo(final TipoEscritorDTO tipoEscritor) {
+        this.tipo = UtilObject.getDefault(tipoEscritor, TipoEscritorDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PublicacionDTO getPublicacion() {
-        return publicacion;
-    }
-
-    public EscritorDTO getEscritor() {
-        return escritor;
-    }
-
-    public TipoEscritorDTO getTipoEscritor() {
-        return tipoEscritor;
-    }
-
     public static EscritorPublicacionDTO create (){
         return new EscritorPublicacionDTO();
     }

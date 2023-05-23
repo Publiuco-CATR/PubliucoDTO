@@ -26,7 +26,7 @@ public class PlanPublicacionDTO {
         setEstado(EstadoDTO.create());
     }
 
-    public PlanPublicacionDTO(final UUID identificador, final PublicacionDTO publicacion, final Double precio, final LocalDateTime fechaDesde, final LocalDateTime fechaHasta, final EstadoDTO estado) {
+    public PlanPublicacionDTO(UUID identificador, PublicacionDTO publicacion, Double precio, LocalDateTime fechaDesde, LocalDateTime fechaHasta, EstadoDTO estado) {
         super();
         setIdentificador(identificador);
         setPublicacion(publicacion);
@@ -34,6 +34,30 @@ public class PlanPublicacionDTO {
         setFechaDesde(fechaDesde);
         setFechaHasta(fechaHasta);
         setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PublicacionDTO getPublicacion() {
+        return publicacion;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public LocalDateTime getFechaDesde() {
+        return fechaDesde;
+    }
+
+    public LocalDateTime getFechaHasta() {
+        return fechaHasta;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public PlanPublicacionDTO setIdentificador(final UUID identificador) {
@@ -65,31 +89,6 @@ public class PlanPublicacionDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PublicacionDTO getPublicacion() {
-        return publicacion;
-    }
-
-    public Double getPrecio() {
-        return precio;
-    }
-
-    public LocalDateTime getFechaDesde() {
-        return fechaDesde;
-    }
-
-    public LocalDateTime getFechaHasta() {
-        return fechaHasta;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static PlanPublicacionDTO create (){
         return new PlanPublicacionDTO();
     }

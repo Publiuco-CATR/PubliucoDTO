@@ -26,7 +26,7 @@ public class RevisionDTO {
         setFechaCompletitudRevision(UtilDate.getDefaultValue());
         setEstado(EstadoDTO.create());
     }
-    public RevisionDTO(final UUID identificador, final VersionDTO version,final TipoRevisionDTO tipoRevision, final LocalDateTime fechaSolicitudRevision,final LocalDateTime fechaLimiteRevision, final LocalDateTime fechaCompletitudRevision, final EstadoDTO estado) {
+    public RevisionDTO(UUID identificador, VersionDTO version, TipoRevisionDTO tipoRevision, LocalDateTime fechaSolicitudRevision, LocalDateTime fechaLimiteRevision, LocalDateTime fechaCompletitudRevision, EstadoDTO estado) {
         setIdentificador(identificador);
         setVersion(version);
         setTipoRevision(tipoRevision);
@@ -34,6 +34,34 @@ public class RevisionDTO {
         setFechaLimiteRevision(fechaLimiteRevision);
         setFechaCompletitudRevision(fechaCompletitudRevision);
         setEstado(estado);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public VersionDTO getVersion() {
+        return version;
+    }
+
+    public TipoRevisionDTO getTipoRevision() {
+        return tipoRevision;
+    }
+
+    public LocalDateTime getFechaSolicitudRevision() {
+        return fechaSolicitudRevision;
+    }
+
+    public LocalDateTime getFechaLimiteRevision() {
+        return fechaLimiteRevision;
+    }
+
+    public LocalDateTime getFechaCompletitudRevision() {
+        return fechaCompletitudRevision;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
     }
 
     public RevisionDTO setIdentificador(final UUID identificador) {
@@ -70,35 +98,6 @@ public class RevisionDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public VersionDTO getVersion() {
-        return version;
-    }
-
-    public TipoRevisionDTO getTipoRevision() {
-        return tipoRevision;
-    }
-
-    public LocalDateTime getFechaSolicitudRevision() {
-        return fechaSolicitudRevision;
-    }
-
-    public LocalDateTime getFechaLimiteRevision() {
-        return fechaLimiteRevision;
-    }
-
-    public LocalDateTime getFechaCompletitudRevision() {
-        return fechaCompletitudRevision;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static RevisionDTO create (){
         return new RevisionDTO();
     }

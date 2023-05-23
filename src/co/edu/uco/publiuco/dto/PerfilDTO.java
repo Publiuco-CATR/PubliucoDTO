@@ -19,12 +19,28 @@ public class PerfilDTO {
         setDeseaRecibirRecomendacionesDeAutor(RespuestaDTO.create());
     }
 
-    public PerfilDTO(final UUID identificador,final LectorDTO lector, final RespuestaDTO deseaRecibirRecomendacionesDeCategoria, final RespuestaDTO deseaRecibirRecomendacionesDeAutor) {
-        super();
-        setIdentificador(identificador);
-        setLector(lector);
-        setDeseaRecibirRecomendacionesDeCategoria(deseaRecibirRecomendacionesDeCategoria);
-        setDeseaRecibirRecomendacionesDeAutor(deseaRecibirRecomendacionesDeAutor);
+    public PerfilDTO(UUID identificador, LectorDTO lector, RespuestaDTO deseaRecibirRecomendacionesDeCategoria, RespuestaDTO deseaRecibirRecomendacionesDeAutor) {
+       super();
+       setIdentificador(identificador);
+       setLector(lector);
+       setDeseaRecibirRecomendacionesDeCategoria(deseaRecibirRecomendacionesDeCategoria);
+       setDeseaRecibirRecomendacionesDeAutor(deseaRecibirRecomendacionesDeAutor);
+    }
+
+    public UUID getIdentificador(){
+        return identificador;
+    }
+
+    public LectorDTO getLector() {
+        return lector;
+    }
+
+    public RespuestaDTO getDeseaRecibirRecomendacionesDeCategoria() {
+        return deseaRecibirRecomendacionesDeCategoria;
+    }
+
+    public RespuestaDTO getDeseaRecibirRecomendacionesDeAutor() {
+        return deseaRecibirRecomendacionesDeAutor;
     }
 
     public PerfilDTO setIdentificador(final UUID identificador) {
@@ -46,24 +62,6 @@ public class PerfilDTO {
         this.deseaRecibirRecomendacionesDeAutor = UtilObject.getDefault(deseaRecibirRecomendacionesDeAutor, RespuestaDTO.create());
         return this;
     }
-
-
-    public UUID getIdentificador(){
-        return identificador;
-    }
-
-    public LectorDTO getLector() {
-        return lector;
-    }
-
-    public RespuestaDTO getDeseaRecibirRecomendacionesDeCategoria() {
-        return deseaRecibirRecomendacionesDeCategoria;
-    }
-
-    public RespuestaDTO getDeseaRecibirRecomendacionesDeAutor() {
-        return deseaRecibirRecomendacionesDeAutor;
-    }
-
     public static PerfilDTO create (){
         return new PerfilDTO();
     }

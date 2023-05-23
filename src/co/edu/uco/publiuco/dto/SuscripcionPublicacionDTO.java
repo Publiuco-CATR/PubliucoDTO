@@ -15,10 +15,22 @@ public class SuscripcionPublicacionDTO {
         setPerfil(PerfilDTO.create());
         setPlanPublicacion(PlanPublicacionDTO.create());
     }
-    public SuscripcionPublicacionDTO(final UUID identificador,final PerfilDTO perfil, final PlanPublicacionDTO planPublicacion) {
+    public SuscripcionPublicacionDTO(UUID identificador, PerfilDTO perfil, PlanPublicacionDTO planPublicacion) {
         setIdentificador(identificador);
         setPerfil(perfil);
         setPlanPublicacion(planPublicacion);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PerfilDTO getPerfil() {
+        return perfil;
+    }
+
+    public PlanPublicacionDTO getPlanPublicacion() {
+        return planPublicacion;
     }
 
     public SuscripcionPublicacionDTO setIdentificador(final UUID identificador) {
@@ -35,19 +47,6 @@ public class SuscripcionPublicacionDTO {
         this.planPublicacion = UtilObject.getDefault(planPublicacion, PlanPublicacionDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PerfilDTO getPerfil() {
-        return perfil;
-    }
-
-    public PlanPublicacionDTO getPlanPublicacion() {
-        return planPublicacion;
-    }
-
     public static SuscripcionPublicacionDTO create (){
         return new SuscripcionPublicacionDTO();
     }

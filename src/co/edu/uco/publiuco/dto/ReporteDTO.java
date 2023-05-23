@@ -14,25 +14,62 @@ public class ReporteDTO {
     private LectorDTO lector;
     private ComentarioLectorDTO comentario;
     private String razon;
-    private TipoReporteDTO tipoReporte;
+    private TipoReporteDTO tipo;
     private LocalDateTime fechaReporte;
+    private EstadoDTO estado;
 
     public ReporteDTO() {
         setIdentificador(UtilUUID.getDefaultValue());
         setLector(LectorDTO.create());
         setComentario(ComentarioLectorDTO.create());
         setRazon(UtilText.getDefaultValue());
-        setTipoReporte(TipoReporteDTO.create());
+        setTipo(TipoReporteDTO.create());
         setFechaReporte(UtilDate.getDefaultValue());
+        setEstado(EstadoDTO.create());
     }
 
-    public ReporteDTO(final UUID identificador,final LectorDTO lector,final ComentarioLectorDTO comentario,final String razon, final TipoReporteDTO tipoReporte, final LocalDateTime fechaReporte) {
+    public ReporteDTO(UUID identificador, LectorDTO lector, ComentarioLectorDTO comentario, String razon, TipoReporteDTO tipo, LocalDateTime fechaReporte,EstadoDTO estado) {
         setIdentificador(identificador);
         setLector(lector);
         setComentario(comentario);
         setRazon(razon);
-        setTipoReporte(tipoReporte);
+        setTipo(tipo);
         setFechaReporte(fechaReporte);
+        setEstado(estado);
+    }
+
+    
+    public EstadoDTO getEstado() {
+		return estado;
+	}
+
+	public ReporteDTO setEstado(EstadoDTO estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
+		return this;
+	}
+
+	public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public LectorDTO getLector() {
+        return lector;
+    }
+
+    public ComentarioLectorDTO getComentario() {
+        return comentario;
+    }
+
+    public String getRazon() {
+        return razon;
+    }
+
+    public TipoReporteDTO getTipo() {
+        return tipo;
+    }
+
+    public LocalDateTime getFechaReporte() {
+        return fechaReporte;
     }
 
     public ReporteDTO setIdentificador(final UUID identificador) {
@@ -55,8 +92,8 @@ public class ReporteDTO {
         return this;
     }
 
-    public ReporteDTO setTipoReporte(final TipoReporteDTO tipoReporte) {
-        this.tipoReporte = UtilObject.getDefault(tipoReporte, TipoReporteDTO.create());
+    public ReporteDTO setTipo(final TipoReporteDTO tipoReporte) {
+        this.tipo = UtilObject.getDefault(tipoReporte, TipoReporteDTO.create());
         return this;
     }
 
@@ -64,31 +101,6 @@ public class ReporteDTO {
         this.fechaReporte = UtilDate.getDefault(fechaReporte);
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public LectorDTO getLector() {
-        return lector;
-    }
-
-    public ComentarioLectorDTO getComentario() {
-        return comentario;
-    }
-
-    public String getRazon() {
-        return razon;
-    }
-
-    public TipoReporteDTO getTipoReporte() {
-        return tipoReporte;
-    }
-
-    public LocalDateTime getFechaReporte() {
-        return fechaReporte;
-    }
-
     public static ReporteDTO create (){
         return new ReporteDTO();
     }

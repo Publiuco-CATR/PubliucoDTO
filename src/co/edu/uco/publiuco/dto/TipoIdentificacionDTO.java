@@ -10,21 +10,30 @@ public class TipoIdentificacionDTO {
     private UUID identificador;
     private String nombre;
     private String descripcion;
-    private EstadoDTO estado;
 
     public TipoIdentificacionDTO() {
-        setIdentificador(UtilUUID.DEFAULT_UUID);
+        setIdentificador(UtilUUID.getDefaultValue());
         setNombre(UtilText.getDefaultValue());
         setDescripcion(UtilText.getDefaultValue());
-        setEstado(new EstadoDTO());
     }
-
-    public TipoIdentificacionDTO(final UUID identificador, final String nombre, final String descripcion, final EstadoDTO estado) {
+    public TipoIdentificacionDTO(UUID identificador, String nombre, String descripcion) {
         setIdentificador(identificador);
         setNombre(nombre);
         setDescripcion(descripcion);
-        setEstado(estado);
     }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
 
     public TipoIdentificacionDTO setIdentificador(final UUID identificador) {
         this.identificador = UtilUUID.getDefault(identificador);
@@ -41,28 +50,7 @@ public class TipoIdentificacionDTO {
         return this;
     }
 
-    public TipoIdentificacionDTO setEstado(final EstadoDTO estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
-        return this;
-    }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
-    public static TipoIdentificacionDTO create(){
+    public static TipoIdentificacionDTO create (){
         return new TipoIdentificacionDTO();
     }
 }

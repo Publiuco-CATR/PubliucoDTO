@@ -16,7 +16,8 @@ public final class CategoriaAdministradorCategoriaDTO {
 		setAdministradorCategoria(AdministradorCategoriaDTO.create());
 	}
 
-	public CategoriaAdministradorCategoriaDTO(final UUID identificador,final CategoriaDTO categoria, final AdministradorCategoriaDTO administradorCategoria) {
+
+	public CategoriaAdministradorCategoriaDTO(UUID identificador, CategoriaDTO categoria, AdministradorCategoriaDTO administradorCategoria) {
 		super();
 		setIdentificador(identificador);
 		setCategoria(categoria);
@@ -34,6 +35,7 @@ public final class CategoriaAdministradorCategoriaDTO {
 	}
 
 	public final CategoriaAdministradorCategoriaDTO setAdministradorCategoria(final AdministradorCategoriaDTO administradorCategoria) {
+
 		this.administradorCategoria = UtilObject.getDefault(administradorCategoria, AdministradorCategoriaDTO.create());
 		return this;
 	}

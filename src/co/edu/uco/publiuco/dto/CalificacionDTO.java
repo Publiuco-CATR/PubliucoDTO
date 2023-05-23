@@ -24,13 +24,33 @@ public class CalificacionDTO {
         setCalificacion(UtilText.getDefaultValue());
     }
 
-    public CalificacionDTO(final UUID identificador, final PublicacionDTO publicacion, final LectorDTO lector,final LocalDateTime fechaCalificacion,final String calificacion) {
+    public CalificacionDTO(UUID identificador, PublicacionDTO publicacion, LectorDTO lector, LocalDateTime fechaCalificacion, String calificacion) {
         super();
         setIdentificador(identificador);
         setPublicacion(publicacion);
         setLector(lector);
         setFechaCalificacion(fechaCalificacion);
         setCalificacion(calificacion);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PublicacionDTO getPublicacion() {
+        return publicacion;
+    }
+
+    public LectorDTO getLector() {
+        return lector;
+    }
+
+    public LocalDateTime getFechaCalificacion() {
+        return fechaCalificacion;
+    }
+
+    public String getCalificacion() {
+        return calificacion;
     }
 
     public CalificacionDTO setIdentificador(final UUID identificador) {
@@ -57,27 +77,6 @@ public class CalificacionDTO {
         this.calificacion = UtilText.applyTrim(calificacion);
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PublicacionDTO getPublicacion() {
-        return publicacion;
-    }
-
-    public LectorDTO getLector() {
-        return lector;
-    }
-
-    public LocalDateTime getFechaCalificacion() {
-        return fechaCalificacion;
-    }
-
-    public String getCalificacion() {
-        return calificacion;
-    }
-
     public static CalificacionDTO create (){
         return new CalificacionDTO();
     }

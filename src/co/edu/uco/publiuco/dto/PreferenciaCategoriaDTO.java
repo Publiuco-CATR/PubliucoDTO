@@ -17,11 +17,23 @@ public class PreferenciaCategoriaDTO {
         setCategoria(CategoriaDTO.create());
     }
 
-    public PreferenciaCategoriaDTO(final UUID identificador,final PerfilDTO perfil,final CategoriaDTO categoria) {
-        super();
-        setIdentificador(identificador);
-        setPerfil(perfil);
-        setCategoria(categoria);
+    public PreferenciaCategoriaDTO(UUID identificador, PerfilDTO perfil, CategoriaDTO categoria) {
+     super();
+     setIdentificador(identificador);
+     setPerfil(perfil);
+     setCategoria(categoria);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public PerfilDTO getPerfil() {
+        return perfil;
+    }
+
+    public CategoriaDTO getCategoria() {
+        return categoria;
     }
 
     public PreferenciaCategoriaDTO setIdentificador(final UUID identificador) {
@@ -38,21 +50,7 @@ public class PreferenciaCategoriaDTO {
         this.categoria = UtilObject.getDefault(categoria, CategoriaDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public PerfilDTO getPerfil() {
-        return perfil;
-    }
-
-    public CategoriaDTO getCategoria() {
-        return categoria;
-    }
-
     public static PreferenciaCategoriaDTO create (){
         return new PreferenciaCategoriaDTO();
     }
-
 }

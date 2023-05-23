@@ -28,7 +28,7 @@ public class ObservacionRevisionDTO {
         setEstado(EstadoDTO.create());
     }
 
-    public ObservacionRevisionDTO(final UUID identificador, final EscritorPublicacionDTO escritorPublicacion,final ComentarioRevisorDTO comentarioRevisor,final LocalDateTime fechaReportePublicacion, final LocalDateTime fechaRevisionObservacion,final String observacion, final EstadoDTO estado) {
+    public ObservacionRevisionDTO(UUID identificador, EscritorPublicacionDTO escritorPublicacion, ComentarioRevisorDTO comentarioRevisor, LocalDateTime fechaReportePublicacion, LocalDateTime fechaRevisionObservacion, String observacion, EstadoDTO estado) {
         super();
         setIdentificador(identificador);
         setEscritorPublicacion(escritorPublicacion);
@@ -39,6 +39,33 @@ public class ObservacionRevisionDTO {
         setEstado(estado);
     }
 
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public EscritorPublicacionDTO getEscritorPublicacion() {
+        return escritorPublicacion;
+    }
+
+    public ComentarioRevisorDTO getComentarioRevisor() {
+        return comentarioRevisor;
+    }
+
+    public LocalDateTime getFechaReportePublicacion() {
+        return fechaReportePublicacion;
+    }
+
+    public LocalDateTime getFechaRevisionObservacion() {
+        return fechaRevisionObservacion;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public EstadoDTO getEstado() {
+        return estado;
+    }
 
     public ObservacionRevisionDTO setIdentificador(final UUID identificador) {
         this.identificador = UtilUUID.getDefault(identificador);
@@ -74,35 +101,6 @@ public class ObservacionRevisionDTO {
         this.estado = UtilObject.getDefault(estado, EstadoDTO.create());
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public EscritorPublicacionDTO getEscritorPublicacion() {
-        return escritorPublicacion;
-    }
-
-    public ComentarioRevisorDTO getComentarioRevisor() {
-        return comentarioRevisor;
-    }
-
-    public LocalDateTime getFechaReportePublicacion() {
-        return fechaReportePublicacion;
-    }
-
-    public LocalDateTime getFechaRevisionObservacion() {
-        return fechaRevisionObservacion;
-    }
-
-    public String getObservacion() {
-        return observacion;
-    }
-
-    public EstadoDTO getEstado() {
-        return estado;
-    }
-
     public static ObservacionRevisionDTO create (){
         return new ObservacionRevisionDTO();
     }

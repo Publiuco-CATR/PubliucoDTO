@@ -17,11 +17,23 @@ public class PaisDTO {
         setIndicadorPais(UtilText.getDefaultValue());
     }
 
-    public PaisDTO(final UUID identificador, final String nombre,final String indicadorPais) {
+    public PaisDTO(UUID identificador, String nombre, String indicadorPais) {
         super();
         setIdentificador(identificador);
         setNombre(nombre);
         setIndicadorPais(indicadorPais);
+    }
+
+    public UUID getIdentificador() {
+        return identificador;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getIndicadorPais() {
+        return indicadorPais;
     }
 
     public PaisDTO setIdentificador(final UUID identificador) {
@@ -38,19 +50,6 @@ public class PaisDTO {
         this.indicadorPais = UtilText.applyTrim(indicadorPais);
         return this;
     }
-
-    public UUID getIdentificador() {
-        return identificador;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getIndicadorPais() {
-        return indicadorPais;
-    }
-
     public static PaisDTO create (){
         return new PaisDTO();
     }

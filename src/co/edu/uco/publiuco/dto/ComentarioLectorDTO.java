@@ -117,8 +117,6 @@ public final class ComentarioLectorDTO {
 		return new ComentarioLectorDTO();
 	}
 
-
-
 	public boolean tienePadre() {
 		return tienePadre;
 	}
